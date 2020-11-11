@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4 p-4">
+            <div class="bs-example">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link" data-toggle="collapse"
+                                    data-target="#collapseOne">Medicines</button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <ul class="card-body px-4 ml-2" style="list-style-type: none;">
+                                <li>Calpal</li>
+                                <li>Vix action 500</li>
+                                <li>Dolo 650</li>
+                                <li>Calpal</li>
+                                <li>Vix action 500</li>
+                                <li>Dolo 650</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseTwo">Patient Locations</button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <ul class="card-body px-4 ml-2" style="list-style-type: none;">
+                                <li>Hyderabd</li>
+                                <li>Chennai</li>
+                                <li>Bangalore</li>
+                                <li>Kolkata</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link" data-toggle="collapse"
+                                    data-target="#collapseOne">Medicines</button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                            data-parent="#accordionExample">
+                            <ul class="card-body px-4 ml-2" style="list-style-type: none;">
+                                <li>Calpal</li>
+                                <li>Vix action 500</li>
+                                <li>Dolo 650</li>
+                                <li>Calpal</li>
+                                <li>Vix action 500</li>
+                                <li>Dolo 650</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseTwo">Patient Locations</button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                            data-parent="#accordionExample">
+                            <ul class="card-body px-4 ml-2" style="list-style-type: none;">
+                                <li>Hyderabd</li>
+                                <li>Chennai</li>
+                                <li>Bangalore</li>
+                                <li>Kolkata</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 d-flex align-items-center justify-content-center">
+            <div *ngIf="receivedpatientsLists">
+                <div class="d-inline-block text-center p-4 cursor_pointer" *ngFor="let patient of receivedpatientsLists; let index as index"
+                    routerLink="/PatientLists/PatientDetails" (click)="showPatientDetails(index)">
+                    <img src="{{patient.imageUrl}}" class="image_patient">
+                    <h5>{{patient.name}}</h5>
+                    <p>{{patient.age}} Years old</p>
+                </div>
+            </div>
+            <div *ngIf="!receivedpatientsLists" class="mb-5">
+                <div class="lds-facebook">
+                    <div class="bg-success"></div>
+                    <div class="bg-primary"></div>
+                    <div class="bg-warning"></div>
+                </div>
+                <p>Please wait..</p>
+            </div>
+        </div>
+    </div>
+</div>

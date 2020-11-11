@@ -1,0 +1,23 @@
+ul li{
+   display: inline;
+   padding: 5px 14px;
+   color: #1cc7d0;
+   font-size: 16px; 
+   font-weight: 600;
+}
+.first_header{
+    background-color: #1cc7d0;
+    padding: 10px;
+}
+select{
+    padding: 3px;
+    color: #1cc7d0
+}
+.fa-search{
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid lightgray;
+}
+.border_bottom{
+    border-bottom: 1px solid #1cc7d0;
+}

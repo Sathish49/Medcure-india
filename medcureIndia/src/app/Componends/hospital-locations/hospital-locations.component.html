@@ -1,0 +1,16 @@
+<div class="bg-light">
+   <div class="container text-center py-3">
+       <h4 routerLink="/PatientLists">Select City to Track Patient Details</h4>
+       <div class="row py-4">
+        <div class="col-2"></div>
+        <div class="col-8">
+           <div *ngFor="let location of locations; index as i" class="d-inline-block mx-4 cursor_pointer" 
+            (click)="navigateToPatientsLists(i)">
+             <img class="rounded-circle" style="height: 125px;
+             width: 150px;" src="{{location.imageUrl}}">
+             <p>{{location.name}}</p>
+           </div>
+        </div>
+       </div>
+   </div>
+</div>
