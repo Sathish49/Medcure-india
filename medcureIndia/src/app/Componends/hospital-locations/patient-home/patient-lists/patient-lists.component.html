@@ -81,7 +81,7 @@
         <div class="col-8 d-flex align-items-center justify-content-center">
             <div *ngIf="receivedpatientsLists">
                 <div class="d-inline-block text-center p-4 cursor_pointer" *ngFor="let patient of receivedpatientsLists; let index as index"
-                    routerLink="/PatientLists/PatientDetails" (click)="showPatientDetails(index)">
+                  (click)="showPatientDetails(index)">
                     <img src="{{patient.imageUrl}}" class="image_patient">
                     <h5>{{patient.name}}</h5>
                     <p>{{patient.age}} Years old</p>

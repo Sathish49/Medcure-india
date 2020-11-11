@@ -13,6 +13,7 @@ const routes: Routes = [
   {path:"", component: BodyPageComponent},
   {path:"hospitals", component: HospitalLocationsComponent},
   {path: "hospitals/:city/patientsLists", component:PatientListsComponent}, 
+  {path:"hospitals/:city/patientsLists/:name", component: PatientDetailsComponent},
 ]
 
 @NgModule({

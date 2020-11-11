@@ -12,10 +12,7 @@ export class PatientsDataService {
   userSelectedPatient;
 
   getData = (endPoint) => {
-    this.http.get(`https://medcure-20830.firebaseio.com/${endPoint}.json`)
-    .subscribe(data => {
-      console.log(data)
-    })
+   return this.http.get(`https://medcure-20830.firebaseio.com/${endPoint}.json`)
   }
   selectedPatient = (selectedPatient) => {
     this.userSelectedPatient = selectedPatient

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PatientsDataService} from '../../../hospital-locations/patients-data.service'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-lists',
@@ -12,30 +12,40 @@ export class PatientListsComponent implements OnInit {
 
   receivedpatientsLists:any;
   endPointName;
-  constructor(private http: HttpClient, private PatientsDataService: PatientsDataService, private activeRoute: ActivatedRoute) { }
+  city;
+
+  constructor(private http: HttpClient, private PatientsDataService: PatientsDataService,
+     private activeRoute: ActivatedRoute, private router: Router) { }
  
 
-  showPatientDetails = (selectedPatient) => {
+  showPatientDetails = (selectedPatient) => { 
    this.PatientsDataService.selectedPatient(selectedPatient)
+   this.router.navigate(["hospitals", this.city, "patientsLists", selectedPatient.name])
   }
   getPatientsLists = () => {
-    let city = this.activeRoute.snapshot.paramMap.get("city")
-    if(city === "Hyderabad"){
-      this.endPointName = "patientsLists"
-    }else if(city === "Chennai"){
-      this.endPointName = "chennaiPatientsLists"
-    }else if(city === "Bangalore"){
-      this.endPointName = "KannadaPatientsLists"
+    this.city = this.activeRoute.snapshot.paramMap.get("city")
+    switch(this.city){
+      case "Hyderabad":
+        this.endPointName = "patientsLists"
+        break
+      case "Chennai":
+        this.endPointName = "chennaiPatientsLists"
+        break
+      case "Bangalore":
+        this.endPointName = "KannadaPatientsLists"
+        break
+      default:
+        this.endPointName = "patientsLists"
+        break
     }
-    this.PatientsDataService.getData(this.endPointName)
   }
 
   ngOnInit(): void {
-    // this.PatientsDataService.getData().subscribe(data => {
-    //   this.receivedpatientsLists = data
-    // })
-    this.getPatientsLists()
 
+    this.getPatientsLists()
+    this.PatientsDataService.getData(this.endPointName).subscribe(data => {
+      this.receivedpatientsLists = data
+    })
   
   }
 
