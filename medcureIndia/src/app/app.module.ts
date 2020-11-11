@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Componends/header/header.component';
 import { FooterComponent } from './Componends/footer/footer.component';
 import { PatientHomeComponent } from './Componends/hospital-locations/patient-home/patient-home.component';
-import { allRoutingComponends } from '../../src/app/app-routing.module'
+import { allRoutingComponends } from '../../src/app/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { allRoutingComponends } from '../../src/app/app-routing.module'
     HeaderComponent,
     FooterComponent,
     PatientHomeComponent,
-    allRoutingComponends
+    allRoutingComponends,
   ],
   imports: [
     BrowserModule,

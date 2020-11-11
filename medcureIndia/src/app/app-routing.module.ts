@@ -7,13 +7,24 @@ import { PatientListsComponent } from '../app/Componends/hospital-locations/pati
 import { PatientDetailsComponent } from '../app/Componends/hospital-locations/patient-home/patient-lists/patient-details/patient-details.component';
 import { PatientHomeComponent } from './Componends/hospital-locations/patient-home/patient-home.component';
 import { PageNotFoundComponent } from './Componends/page-not-found/page-not-found.component';
+import { PatientDetailsHomepageComponent } from './Componends/hospital-locations/patient-home/patient-lists/patient-details-homepage/patient-details-homepage.component'
+
 
 const routes: Routes = [
   {path: "", redirectTo:"/", pathMatch:"full"},
   {path:"", component: BodyPageComponent},
-  {path:"hospitals", component: HospitalLocationsComponent},
-  {path: "hospitals/:city/patientsLists", component:PatientListsComponent}, 
-  {path:"hospitals/:city/patientsLists/:name", component: PatientDetailsComponent},
+  {path:"hospitals", component: PatientHomeComponent, 
+   children: [
+     {path: "", component: HospitalLocationsComponent},
+     {path:":city", component:PatientDetailsHomepageComponent, 
+     children: [
+      {path: "", component: PatientListsComponent},
+      {path: ":name", component: PatientDetailsComponent},
+     ]
+    }
+   ]},
+  // {path: "hospitals/:city/patientsLists", component:PatientListsComponent}, 
+  // {path:"hospitals/:city/patientsLists/:name", component: PatientDetailsComponent},
 ]
 
 @NgModule({
@@ -28,5 +39,6 @@ export const allRoutingComponends = [
   PatientListsComponent,
   PageNotFoundComponent,
   PatientDetailsComponent,
-  PatientHomeComponent
+  PatientHomeComponent,
+  PatientDetailsHomepageComponent
 ]

@@ -20,7 +20,7 @@ export class PatientListsComponent implements OnInit {
 
   showPatientDetails = (selectedPatient) => { 
    this.PatientsDataService.selectedPatient(selectedPatient)
-   this.router.navigate(["hospitals", this.city, "patientsLists", selectedPatient.name])
+   this.router.navigate([selectedPatient.name],{relativeTo: this.activeRoute})
   }
   getPatientsLists = () => {
     this.city = this.activeRoute.snapshot.paramMap.get("city")

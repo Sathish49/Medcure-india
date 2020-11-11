@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-hospital-locations',
@@ -19,10 +19,10 @@ export class HospitalLocationsComponent implements OnInit {
 
   navigateToPatientsLists = (index) => {
     let cityName = this.locations[index].name
-    this.router.navigate(["/hospitals", cityName, "patientsLists"])
+    this.router.navigate([cityName], {relativeTo: this._activeRoute})
   }
 
-  constructor(private  router: Router) { }
+  constructor(private  router: Router, private _activeRoute: ActivatedRoute) { }
 
 
 
