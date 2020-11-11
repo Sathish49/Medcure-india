@@ -11,24 +11,25 @@ import { PatientDetailsHomepageComponent } from './Componends/hospital-locations
 
 
 const routes: Routes = [
-  {path: "", redirectTo:"/", pathMatch:"full"},
-  {path:"", component: BodyPageComponent},
-  {path:"hospitals", component: PatientHomeComponent, 
-   children: [
-     {path: "", component: HospitalLocationsComponent},
-     {path:":city", component:PatientDetailsHomepageComponent, 
-     children: [
-      {path: "", component: PatientListsComponent},
-      {path: ":name", component: PatientDetailsComponent},
-     ]
-    }
-   ]},
-  // {path: "hospitals/:city/patientsLists", component:PatientListsComponent}, 
-  // {path:"hospitals/:city/patientsLists/:name", component: PatientDetailsComponent},
+  { path: "", redirectTo: "/", pathMatch: "full" },
+  { path: "", component: BodyPageComponent },
+  {
+    path: "hospitals", component: PatientHomeComponent,
+    children: [
+      { path: "", component: HospitalLocationsComponent },
+      {
+        path: ":city", component: PatientDetailsHomepageComponent,
+        children: [
+          { path: "", component: PatientListsComponent },
+          { path: ":name", component: PatientDetailsComponent },
+        ]
+      }
+    ]
+  },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
